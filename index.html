@@ -5,12 +5,137 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>RPS Advanced</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Link to local css file -->
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!-- Link to jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Link to Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+
 </head>
-<body>
 
+<body style="margin:0;padding:0">
+    <!-- ================================================= -->
+    <!-- Nav bar  -->
+    <section class="nav-bar">
 
+        <!-- Log out button (hidden until logged in) -->
+        <button class="logout-btn" id="logout-btn">Log out</button>  
+
+        <!-- Title -->
+        <div class="title"><strong>Rock / Paper / Scissors</strong></div>
+
+    </section>     
+    
+    <p></p>
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- Log-in or Sign-up window  -->
+    <section class="cloak-log">
+        <section class="log-in">
+            <strong>Welcome, player!</strong>
+
+            <br><br>
+
+            <!-- Name entry bar and log in button-->
+            <input type="text" class="username" id="username" placeholder="Enter your name..">
+
+            <br>
+
+            <button class="login-btn" id="create-btn">Next</button>
+
+        </section>
+    </section>
+    <!-- ================================================= -->
+
+    <!-- ================================================= -->
+    <!-- Game lobby -->
+    <section class="cloak-lobby">
+        <section class="lobby">
+
+            <!-- Match button -->
+            <button class="find-match" id="find-match">Find match</button>
+
+            <!-- Chat box -->
+            <div class="chat-window" id="chat-window">
+                <ul class="chat-list"></ul>
+            </div>
+
+            <input class="chat-log" id="message" type="text" placeholder=" Type a message..">
+            <button class="send-btn" id="send">Send</button>      
+            
+
+        </section>
+    </section>
+    <!-- ================================================= -->
+    
+    <!-- ================================================= -->
+    <!-- Game start screen -->
+    <section class="cloak-game">
+        <section class="game-start">
+
+            <!-- Player one's console: player choices-->
+            <div class="console-one">
+                <h2><strong><div class="player-one"></div></strong></h2>        
+                <div class="pl-one-choices">
+                    <button class="pl-one-choice" value="r">Rock!</button>
+                    <button class="pl-one-choice" value="p">Paper!</button>
+                    <button class="pl-one-choice" value="s">Scissors!</button>
+                </div>
+
+                <!-- Player one's console: stats and choice -->
+                <div class="results">
+                    <div class="pl-one-wins"></div>
+                    <div class="pl-one-losses"></div>
+                    <div class="pl-one-ties"></div>
+                    <br>
+                    <div class="pl-one-final"></div>
+                </div>
+            </div>
+
+            <!-- Middle console: timer -->
+            <div class="mid-console">
+                <div class="game-state">
+                    <div class="gs-entry"></div>
+                </div>
+
+                <div class="lob-rem">
+                        <div class="relob">
+                            <button class="re-btn">Return to Lobby</button>
+                        </div>
+    
+                        <div class="rematch">
+                            <button class="re-btn">Rematch</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player two's console: player choices -->
+            <div class="console-two">
+                <h2><strong><div class="player-two"></div></strong></h2>        
+                <div class="pl-two-choices">
+                    <button class="pl-two-choice" value="r">Rock!</button>
+                    <button class="pl-two-choice" value="p">Paper!</button>
+                    <button class="pl-two-choice" value="s">Scissors!</button>
+                </div>
+
+                <!-- Player two's console: stats and choice -->
+                <div class="results">
+                    <div class="pl-two-wins"></div>
+                    <div class="pl-two-losses"></div>
+                    <div class="pl-one-ties"></div>
+                    <br>
+                    <div class="pl-two-final"></div>
+                </div>
+            </div>
+
+        </section>
+    </section>
+    <!-- ================================================= -->
+
+    <!-- Link to local javascript file -->
     <script src="assets/js/main.js"></script>
 </body>
 </html>
