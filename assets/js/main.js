@@ -186,6 +186,19 @@ database.ref("/game/").on("value", function(snapshot) {
         $chatUi.append("<li class='msg-entry'>" + plOne.name + " is waiting for an opponent!</li>");
     }
 
+    // If only player two is present
+    if (!plOne && plTwo) {
+        console.log(plOne.name + " disconnected")
+
+        // Remove user from database upon disconnecting 
+        database.ref("/game/plTwo").remove();
+
+        // Bring user back to lobby
+        $('.cloak-lobby').css('display', 'unset');
+        $('.cloak-game').css('display', 'none');
+
+    }
+
 
 	// If both players are now present, it's plOne's turn
 	if (plOne && plTwo) {
@@ -313,6 +326,17 @@ database.ref("/turn/").on("value", function(snapshot) {
 
     	// Compare the players choices and record the outcome
         endGame();
+
+    } else if (snapshot.val() === 4) {
+
+        // Remove user from player position 
+        database.ref("/game/plOne").remove();
+        database.ref("/game/plTwo").remove();
+
+        // Bring user back to lobby
+        $('.cloak-lobby').css('display', 'unset');
+        $('.cloak-game').css('display', 'none');
+
     }
 
 });
@@ -457,16 +481,10 @@ $(".rematch").click(function() {
 //  BUTTON EVENT: RETURN TO LOBBY
 // ================================================= //
 
-// $(".relob").click(function() {
+$(".relob").click(function() {
     
-//     // Remove user from player position 
-//     database.ref("/game/plTwo").remove();
-//     $(".results").css("display", "unset");
-//     $(".lob-rem").css("display", "unset");
+    // End game session indefinitely
+    turn = 4;
+    database.ref().child("/turn").set(4);
 
-//     // Bring user back to the lobby
-//     $(".results").css("display", "none");
-//     $(".results").css("display", "none");
-//     $(".lob-rem").css("display", "none");
-
-// });
+});
